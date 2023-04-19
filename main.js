@@ -6,5 +6,5 @@ function sum() {
 }
 
 const sumNumber = sum();
-console.log(sumNumber(3));
-console.log(sumNumber(5));
+sumNumber(3);
+sumNumber(5);
