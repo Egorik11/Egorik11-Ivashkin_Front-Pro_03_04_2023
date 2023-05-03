@@ -31,7 +31,7 @@ const person2 = new Person('Anna', 'female');
 const apartment1 = new Apartment();
 const apartment2 = new Apartment();
 
-const house = new House(2);
+const house = new House(1);
 
 apartment1.addHabitant(person1);
 apartment2.addHabitant(person2);
