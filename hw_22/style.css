@@ -1,0 +1,33 @@
+.container{
+  padding: 2% 0 0;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:0 auto;
+}
+
+.container img{
+  width: 100%;
+  display: none;
+}
+
+.box img.active{
+  display: block;
+}
+
+.container .box{
+  padding: 0 20px 0;
+  height: auto;
+  max-height: 300px;
+}
+
+.container button{
+  padding: 10px 30px;
+  border-radius: 4px;
+  border: none;
+  background-color: beige;
+  font-size: 24px;
+  cursor: pointer;
+}
