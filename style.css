@@ -1,0 +1,25 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.link{
+  margin: 0 20px;
+  position: relative;
+  width: 100px;
+  height: 50px;
+  background-color: aqua;
+  border-radius: 5px;
+}
+
+.link a{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+}
