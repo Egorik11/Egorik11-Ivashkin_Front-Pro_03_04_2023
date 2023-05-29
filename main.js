@@ -86,7 +86,7 @@ const blockInfo = document.querySelector('.info');
 
 function showInfoImg(img, el, parent, infoContainer) {
   img.addEventListener('click', () => {
-    infoContainer.innerHTML = `Image source: ${el.src}, Category: ${el.categories}`;
+    infoContainer.innerHTML = `${JSON.stringify(el.info)}`;
   });
   parent.appendChild(img);
   blockInfo.appendChild(infoContainer);
