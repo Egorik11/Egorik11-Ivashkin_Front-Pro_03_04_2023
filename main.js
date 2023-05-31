@@ -84,9 +84,20 @@ const select = document.querySelector('#select');
 const showInfo = document.querySelector('.showInfo');
 const blockInfo = document.querySelector('.info');
 
+function createMarkupInfo(el) {
+  const objInfo = el.info;
+  const mainDiv = document.createElement('div');
+  for (const key in objInfo) {
+    const p = document.createElement('p');
+    p.textContent = `${key}: ${objInfo[key]};  `;
+    mainDiv.appendChild(p);
+  }
+  return mainDiv;
+}
+
 function showInfoImg(img, el, parent, infoContainer) {
   img.addEventListener('click', () => {
-    infoContainer.innerHTML = `${JSON.stringify(el.info)}`;
+    infoContainer.textContent = createMarkupInfo(el);
   });
   parent.appendChild(img);
   blockInfo.appendChild(infoContainer);
