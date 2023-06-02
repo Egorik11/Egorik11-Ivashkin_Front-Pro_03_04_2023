@@ -1,55 +1,51 @@
-.container{
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
+.container {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
 }
 
-.viewCategories{
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.viewCategories img{
-  margin: 30px;
-}
-
-.info {
-  padding-top: 30px;
-  width: 100%;
-  max-width: 300px;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.info > div:first-child {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.info .showInfo {
-  border: 1px solid #ccc;
+.inputId {
   padding: 10px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  outline:none;
+}
+
+.inputId.valid {
+  border-color: green;
+  box-shadow: 0 0 5px green;
+}
+
+.inputId.invalid {
+  border-color: red;
+  box-shadow: 0 0 5px red;
+}
+
+#submit {
+  padding: 10px 20px;
   font-size: 14px;
-  background-color: #f5f5f5;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.categories {
-  padding-top: 30px;
-  text-align: center;
-  margin-bottom: 20px;
+#submit:hover {
+  background-color: #45a049;
+  transition: .3s;
 }
 
-.categories select {
+#post {
+  width: 700px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
   padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
 }
