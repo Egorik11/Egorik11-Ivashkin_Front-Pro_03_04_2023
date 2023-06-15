@@ -25,7 +25,6 @@ function todoRequest(city) {
 function createMarkup(data) {
   const info = document.querySelector('.info');
   const dataMain = data.main;
-  console.log(data);
   info.innerHTML = `<p>temp : ${dataMain.temp}</p> <br />
   <p>pressure: ${dataMain.pressure}</p> <br />
   <p>description: ${data.weather[0].description}</p> <br />
