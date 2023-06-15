@@ -1,45 +1,48 @@
-const url = 'https://jsonplaceholder.typicode.com/posts/';
-const submit = document.querySelector('#submit');
+const typeCity = document.querySelector('#typeCity');
 
-function getId() {
-  const inputId = document.querySelector('#inputId');
-  let targetValue;
-  const reqExp = /^([1-9]|[1-9][0-9]|100)$/;
+function todoRequest(city) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
 
-  inputId.addEventListener('keyup', (e) => {
-    targetValue = e.target.value;
-    inputId.classList.remove('valid', 'invalid');
-    if (reqExp.test(targetValue)) {
-      inputId.classList.add('valid');
-    } else {
-      inputId.classList.add('invalid');
-    }
-  });
-  return () => Number(targetValue);
-}
+    xhr.open(
+      'GET',
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5d066958a60d315387d9492393935c19`
+    );
 
-const getTargetValue = getId();
+    xhr.onload = function () {
+      if (xhr.status !== 200) {
+        throw new Error(`${xhr.status}: ${xhr.statusText}`);
+      } else {
+        const data = JSON.parse(xhr.responseText);
+        resolve(data);
+      }
+    };
 
-function makeRequest(url, id) {
-  return fetch(`${url}${id}`).then((res) => {
-    if (!res.ok) {
-      throw new Error(`Error ${res.status}`);
-    }
-    return res.json();
+    xhr.send();
   });
 }
 
-function createMarkup(post) {
-  const postContainer = document.querySelector('#post');
-  const p = document.createElement('p');
-  p.innerHTML = `id: ${post.id} <br/> title: ${post.title} <br/> body: ${post.body}`;
-  postContainer.appendChild(p);
+function createMarkup(data) {
+  const info = document.querySelector('.info');
+  const dataMain = data.main;
+  console.log(data);
+  info.innerHTML = `<p>temp : ${dataMain.temp}</p> <br />
+  <p>pressure: ${dataMain.pressure}</p> <br />
+  <p>description: ${data.weather[0].description}</p> <br />
+  <p>humidity: ${dataMain.humidity}</p> <br />
+  <p>speed : ${data.wind.speed}</p> <br />
+  <p>deg: ${data.wind.deg}</p> <br />
+  <p>pressure: ${dataMain.temp}</p> <br />`;
 }
 
-submit.addEventListener('click', (e) => {
-  const postContainer = document.querySelector('#post');
-  postContainer.innerHTML = '';
-  makeRequest(url, getTargetValue())
+typeCity.addEventListener('click', (e) => {
+  e.target.value = '';
+});
+
+typeCity.addEventListener('keyup', (e) => {
+  const target = e.target.value;
+
+  todoRequest(target)
     .then((data) => {
       createMarkup(data);
     })
@@ -47,3 +50,11 @@ submit.addEventListener('click', (e) => {
       console.error(error);
     });
 });
+
+todoRequest('New York')
+  .then((data) => {
+    createMarkup(data);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
